@@ -29,7 +29,7 @@ const ScrollScreen = ({navigation}) => {
           <View style={styles.mainwrapper}>
             <View style={styles.container}>
               <View style={styles.text}>
-                <Text style={{fontSize: 30}}> Register </Text>
+                <Text style={styles.headText}> Register </Text>
               </View>
 
               <View style={styles.textinput}>
@@ -49,12 +49,19 @@ const ScrollScreen = ({navigation}) => {
                   mode="outlined"
                   label="Email"
                   style={{backgroundColor: '#fff', marginTop: 10}}
+                  right={<TextInput.Icon icon="email" />}
                 />
 
                 <PhoneInput
                   defaultValue={phoneNumber}
                   withShadow
-                  containerStyle={{backgroundColor: '#fff', marginTop: 10, borderWidth:1, borderRadius:10}}
+                  containerStyle={{
+                    backgroundColor: '#fff',
+                    marginTop: 10,
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    marginHorizontal : -1,
+                  }}
                 />
 
                 <TextInput
@@ -62,6 +69,7 @@ const ScrollScreen = ({navigation}) => {
                   label="Password"
                   secureTextEntry={true}
                   style={{backgroundColor: '#fff', marginTop: 10}}
+                  right={<TextInput.Icon icon="eye" />}
                 />
               </View>
               <View style={styles.checkboxContainer}>
@@ -73,24 +81,21 @@ const ScrollScreen = ({navigation}) => {
                     }}
                   />
                 </View>
-
-                <View style={{flex:1, flexDirection:'row',}}>
-                  <Text> I agree to </Text>
-                  <TouchableOpacity>
-                    <Text style={{color:'#E70736'}}> Usage Terms</Text>
-                  </TouchableOpacity>
-                  <Text> and </Text>
-                  <TouchableOpacity>
-                    <Text style={{color:'#E70736'}}> Privacy Policy</Text>
-                  </TouchableOpacity>
-                </View>
+                  <View style={styles.textCon}> 
+                      <Text> I agree to </Text>
+                      <TouchableOpacity><Text style={styles.TermLink}>Usage Terms</Text></TouchableOpacity>
+                      <Text> and </Text>
+                      <TouchableOpacity><Text style={styles.TermLink}>Privacy Policy</Text></TouchableOpacity>
+                      
+                  </View>
+                
               </View>
 
               <Button
                 // mode="contained"
                 style={styles.btn}
-                onPress={() => console.log('Pressed')}>
-                <Text style={{color: 'black'}}> Register </Text>
+                onPress={() => navigation.navigate('OTP')}>
+                <Text style={{color: 'black', fontSize:15,fontWeight:'500'}}> Register </Text>
               </Button>
 
               <View style={styles.login}>
@@ -120,6 +125,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 
+  headText : {
+    fontSize : 25,
+    fontWeight : '400'
+  },
+
   mainwrapper: {
     height: 560,
     backgroundColor: '#ededed',
@@ -144,8 +154,9 @@ const styles = StyleSheet.create({
 
   btn: {
     marginHorizontal: 60,
-    marginVertical : 5,
-    borderWidth: 2,
+    marginVertical: 5,
+    borderWidth: 1,
+    borderRadius :5,
     borderColor: 'black',
   },
 
@@ -156,15 +167,26 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
 
-  checkbox : {
-    marginLeft : 15,
+  checkbox: {
+    marginLeft: 14,
+    marginHorizontal : -10
   },
 
-  checkboxContainer : {
+  checkboxContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  textCon : {
     flex : 1,
     flexDirection : 'row',
-    alignItems : 'center'
+    
   },
+
+  TermLink : {
+    color : '#E70736',
+  }
 });
 
 export default ScrollScreen;

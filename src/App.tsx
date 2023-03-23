@@ -14,6 +14,10 @@ import {
 } from 'react-native';
 import LoginScreen from './Screens/LoginScrren';
 import ScrollScreen from './Screens/ScrollScreen';
+import ForgotScreen from './Screens/ForgotScreen';
+import OTPScreen from './Screens/OTPScreen';
+import ChangeNumScreen from './Screens/ChangeNumScreen';
+
 
 
 
@@ -29,9 +33,12 @@ const App = () => {
         <Stack.Navigator initialRouteName="LogoScreen">
           <Stack.Screen name='Login' component={LoginScreen} options={{headerShown:false}}/>
           <Stack.Screen name='SignUp' component={ScrollScreen} options={{headerShown:false}}/>
+          <Stack.Screen name='Fpass' component={ForgotScreen} options={{headerShown:false}}/>
+          <Stack.Screen name='OTP' component={OTPScreen} options={{headerShown:false}}/>
+          <Stack.Screen name='ChangeNum' component={ChangeNumScreen} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>       
-  
+    
    
   );
 }

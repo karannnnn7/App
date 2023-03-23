@@ -13,75 +13,77 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import logo from '../assets/Logo1.png';
 
 const LoginScreen = ({navigation}) => {
+
   const [checked, setChecked] = React.useState(false);
 
   return (
-
-        <View>
-          <View style={styles.v1}>
-            <Image source={logo} />
+    <View>
+      <View style={styles.v1}>
+        <Image source={logo} />
+      </View>
+      <View style={styles.mainWrapper}>
+        <View style={styles.container}>
+          <View style={styles.text}>
+            <Text style={{fontSize: 30, fontWeight:'400'}}> Log In </Text>
           </View>
-          <View style={styles.mainWrapper}>
-            <View style={styles.container}>
-              <View style={styles.text}>
-                <Text style={{fontSize: 30}}> Log In </Text>
-              </View>
 
-              <View style={styles.textinput}>
-                {/* <Fontisto name="email" size={25} /> */}
-                <TextInput
-                  mode="outlined"
-                  label="Email"
-                  style={{backgroundColor: '#fff'}}
+          <View style={styles.textinput}>
+            {/* <Fontisto name="email" size={25} /> */}
+            <TextInput
+              mode="outlined"
+              label="Email"
+              style={{backgroundColor: '#fff'}}
+              right={<TextInput.Icon icon="email" />}
+            />
+
+            <TextInput
+              mode="outlined"
+              label="Password"
+              secureTextEntry={true}
+              style={{backgroundColor: '#fff', marginTop: 10}}
+              right={<TextInput.Icon icon="eye" />}
+            />
+
+            <View style={styles.links}>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <Checkbox
+                  status={checked ? 'checked' : 'unchecked'}
+                  onPress={() => {
+                    setChecked(!checked);
+                  }}
                 />
 
-                <TextInput
-                  mode="outlined"
-                  label="Password"
-                  secureTextEntry={true}
-                  style={{backgroundColor: '#fff', marginTop: 10}}
-                />
-
-                <View style={styles.links}>
-                  <View
-                    style={{
-                      flex: 1,
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                    }}>
-                    <Checkbox
-                      status={checked ? 'checked' : 'unchecked'}
-                      onPress={() => {
-                        setChecked(!checked);
-                      }}
-                    />
-                    <Text style={{color: '#E70736'}}> Remember Me </Text>
-                  </View>
-                  <TouchableOpacity>
-                    <Text style={styles.fp}> Forgot Password ? </Text>
-                  </TouchableOpacity>
-                </View>
+                <Text style={{color: '#E70736'}}> Remember Me </Text>
               </View>
-
-              <Button
-                mode="contained"
-                style={styles.btn}
-                onPress={() => console.log('Pressed')}>
-                <Text style={{color: 'black'}}> Log In </Text>
-              </Button>
-
-              <View style={styles.acc}>
-                <Text> New User? </Text>
-                <TouchableOpacity
-                  onPress={()=>navigation.navigate('SignUp')}
-                >
-                  <Text style={{color: '#E70736'}}> Create New Account </Text>
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity onPress={() => navigation.navigate('Fpass')}>
+                <Text style={styles.fp}> Forgot Password ? </Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </View>
 
+          <Button
+            // mode="contained"
+            style={styles.btn}
+            onPress={() => navigation.navigate("Home")}>
+            <Text style={{color: 'black', fontSize: 15, fontWeight: '500'}}>
+              Log In
+            </Text>
+          </Button>
+
+          <View style={styles.acc}>
+            <Text> New User? </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <Text style={{color: '#E70736'}}> Create New Account </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </View>
   );
 };
 
@@ -135,11 +137,11 @@ const styles = StyleSheet.create({
   },
 
   btn: {
-    backgroundColor: '#fff',
+    marginVertical: 5,
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius : 5,
     borderColor: 'black',
-    marginHorizontal: 70,
+    marginHorizontal: 60,
   },
 
   acc: {
